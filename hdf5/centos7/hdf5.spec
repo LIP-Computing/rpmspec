@@ -4,7 +4,7 @@ i# $Id$
 
 Summary: Manages extremely large and complex data collections
 Name: hdf5
-Version: 1.8.7
+Version: 1.8.17
 Release: 1%{?dist}
 License: Distributable
 Group: Development/Libraries
@@ -21,6 +21,8 @@ BuildRequires: gcc-gfortran
 BuildRequires: libjpeg-devel
 BuildRequires: make
 BuildRequires: zlib-devel >= 1.1.2
+BuildRequires: mpich
+BuildRequires: mpich-devel
 BuildRequires: rpm-macros-rpmforge
 
 # don't scan the examples for autoreq/prov
@@ -65,6 +67,7 @@ FC=/usr/bin/gfortran %configure \
     --disable-static \
     --enable-shared \
     --enable-cxx \
+    --enable-parallel \
     --enable-fortran
 %{__make} %{?_smp_mflags}
 
@@ -100,6 +103,8 @@ FC=/usr/bin/gfortran %configure \
 %exclude %{_libdir}/libhdf5*.la
 
 %changelog
+* 
+
 * Tue Aug 02 2011 Steve Huff <shuff@vecna.org> - 1.8.7-1
 - Updated to release 1.8.7.
 - Added additional compile-time options.
